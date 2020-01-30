@@ -45,7 +45,7 @@ export default class Main extends Component{
 const AA= props=> <Button title="button" onPress={ props.onPress}></Button>
 const BB= ({msg})=> <Text>{msg}</Text>
 
-const MyComponent5= ( {data, title} )=>{ //props를 구조분해할당으로 받기
+const MyComponent5= ( {data, title} )=>{ //props를 구조분해할당으로 받기 ,
     return <View>
               <Text>{ data }</Text>
               <Text>{ title }</Text>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>04Table</title>
+    </head>
+
+    <body>
+        
+        <table border="1">
+            <!-- 테이블 헤더 -->
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>Hello</td>
+            </tr>
+
+            <!-- 각 행(row)의 데이터(셀)개수가 다를 수 있음. -->
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>nice to meet you.</td>
+                <td>20191203</td>
+            </tr>
+        </table>
+        <hr>
+
+        <!-- 셀병합 -->
+        <table border="1">
+            <!-- 한줄만 있을 때는 비교대상이 없기에 span의 영향이 없음 -->
+            <tr>
+                <td rowspan="2">111</td>
+                <td>222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>bbb</td>
+                <td>ccc</td>
+                <td>ddd</td>
+                <td>ffffffffffff</td>
+            </tr>
+            <!-- 테이블 전체 제목(caption) -->
+            <caption>테이블 제목</caption>
+            <!-- caption은 작성위치와 상관없이 무조건 테이블의 상단에 표시됨 -->
+            <!-- 만약 조정하고 싶다면.. css를 사용해야함. -->
+        </table>
+        <hr>
+
+        <!-- 테이블 <td> 요소안에 다른 요소 (element) 넣기 -->
+        <table border="2" width="100%">
+            <tr>
+                <!-- <td>안에 <a>요소 넣기 -->
+                <td width="30%"><a href="http://naver.com">NAVER</a></td>
+                
+                <!-- <td>안에 <ul> 요소 넣기-->
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <!-- <td>에 <p>요소 넣기 -->
+                <td>
+                    <p>테이블안에 어떤 요소든 넣을 수 있음. 한글은 자동 줄바꿈이 됨.</p>
+                    <!-- 영어는 한글과 다르게 자동 줄밖무이 안됨 -->
+                    <p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
+                </td>
+                <!-- <td> <img>요소 넣기 -->
+                <td rowspan="2">
+                    <img src="./original.gif" alt="moana" width="" height="">
+                </td>
+            </tr>
+    
+            <tr>
+                <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
+            </tr>
+        </table>
+    </body>
+</html>
+<hr>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>loaclhost</title>
+        <body>
+            
+            <table border="1" width="100%">
+                <tr>
+                    <th colspan="5">평생교육원 강좌 소개 -- 2013년도2학기</th>
+                </tr>
+                <tr>
+                    <th width="8%"><strong>강좌이름</strong></th>
+                    <th width="5%"><strong>강의자</strong></th>
+                    <th width="70%"><strong>소개</strong></th>
+                    <th width="8%"><strong>강좌코드</strong></th>
+                    <th width="10%" ><strong>실습비</strong></th>
+                </tr>
+                <tr>
+                    <td>뎃생과 유화</td>
+                    <td>김철수</td>
+                    <td>모든 미술영역의 뼈대를 이루는 덧생의 기본실력을 체계적으로 다루며, 유화에서는 재료를 다루는 방법에서부터 다양한 표현기법에 이르기까지 전문적인 미술인으로 입문할 수 있도록 각 개인의 수준에 맞추어 개인별, 단계별로 지도 합니다.</td>
+                    <td>H27</td>
+                    <td>100,000원</td>
+                </tr>
+                <tr>
+                    <td>바이올린</td>
+                    <td>홍길동</td>
+                    <td>전반적인 현악가의 특성을 파악하며 기초를 다지고, 에뛰드와 곡을 접하면서 아름다운 음색의 바이올린을 연주할 수 있다.</td>
+                    <td>H28</td>
+                    <td>200,000원</td>
+                </tr>
+                <tr>
+                    <td>성악아카데미</td>
+                    <td>김호성</td>
+                    <td>강의를 통해 배우고 익힌 곡을 음악회를 통하여 기량을 향상하고 무대를 경험한다.</td>
+                    <td>H30</td>
+                    <td>300,000원</td>
+                </tr>
+            </table>
+
+        </body>
+    </head>
+</html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    
+    <body>
+            <table border="1" colspan="3">
+                    <tr>
+                        <td><strong>Colmn 1</strong></td>
+                        <td><strong>Colmn 2</strong></td>
+                        <td><strong>Colmn 3</strong></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Row 1 Cell 2</td>
+                        <td>Row 1 Cell 2</td>
+                        <td>Rpw 1 Cell 3</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2 Cell 2</td>
+                        <td>Row 2 Cell 3</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Row 3 Cell 1</td>
+                    </tr>
+                </table>
+            
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <title> My Homepage</title> -->
+    </head>
+    <body>
+        <p><h2>My Homepage</h2></p>
+        <p><img src="./programmer.png" alt="programmer" width="100" height="100" align="left">
+        <br><br><br><br>
+        <Strong>컴퓨터 프로그래머</Strong>를 꿈꾸며 열심히 공부하고 있는 1인입니다.</p>
+        <p><h3>현재 학습하고 있는과목</h3></p>
+        <p><ul>
+            <li>C 언어</li>
+            <li>JAVA 언어</li>
+            <li>웹프로그래밍 <a href="http://w3schools.com">W3C 사이트</a></li>
+        </ul></p>
+        <p><h3>이번 학기 시간표</h3></p>
+        <p>
+            <table border="1">
+                <caption>시간표</caption>
+                <tr>
+                    <th></th>
+                    <th>월요일</th>
+                    <th>화요일</th>
+                    <th>수요일</th>
+                </tr>
+                <tr>
+                    <td>1교시</td>
+                    <td>C언어</td>
+                    <td>JAVA언어</td>
+                    <td>JAVA언어</td>
+                </tr>
+                <tr>
+                    <td>2교시</td>
+                    <td>C언어</td>
+                    <td>JAVA언어</td>
+                    <td>JAVA언어</td>
+                </tr>
+            </table>
+        </p>
+    </body>
+</html>

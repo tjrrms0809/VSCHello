@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS의 Object</title>
+
+    <script>
+        // 자바스크립트에서 객체의 2가지 종류
+        // 1. 내장객체 : document, window, navigation... etc... Date(), String(), Array()...
+        // 2. 사용자정의 객체
+
+        // 사용정의 객체를 만드는 2가지 방법 
+        // (ECMA5 버전부터 class키워드 생김: 즉, 지금은 방법 3가지임. 3번째 방법은 뒤 챕터에서 소개)
+        // 1) 리터럴 객체 [객체를 생성하면서 설계하는 방식]
+        var person= {
+            //멤버변수 - 속성 property
+            name: "sam",
+            age: 20,
+
+            //멤버함수 - 메소드 method
+            show:function(){
+                // document.write("show : "+ name + " , " +age+"<br>"); //<-- name, age를 알아듣지 못함.:error
+                // JS에서는 멤버변수(속성)을 사용할 때 반드시 this. 키워드가 필요함!!!
+                document.write("show : "+ this.name + " , " + this.age +"<br>");
+            }
+
+            // 메소드를 아래처럼 선언적 함수문법으로 만들면 에러!!
+            // function aaa(){} ERROR
+        };
+
+        // 객체 멤버 (속성) 출력
+        document.write(" name : " + person.name + " , ");
+        document.write(" age : " + person.age + " <br> ");
+    
+        // 객체 메소드 호출
+        person.show();
+
+        // 새로운 person객체를 또 만들고 싶다면..
+        // 또다시리터럴 객체를 다 만들어야 함.
+        var person2= {
+            name: "robin",
+            age:25,
+            show:function(){
+                document.write('show : '+ this.name + " , " + this.age +"<br>");
+            },
+
+            // 멤버함수추가 - 파라미터 기능
+            add:function( a, b){
+                var c= a+b;
+                document.write("add : " + c+ "<br>");
+            }
+        }
+        person2.show();
+        person2.add(5,3);
+
+        person2.show(5,3); // 파라미터 없는 메소드에 값을 전달하면 ?? 상관없음.
+        // person.add(5,3); //error : person객체는 add()메소드가 존재하지 않음
+        
+        // 자바 스크립트는 유연한 언어여서 객체 생성 후에 멤버추가각 가능 함
+        person.tel= "01012345678"; //존재하지 않는 멤버에 값을 대입하면 새로운 멤버변수가 추가
+        document.write(" name : " + person.name + " , ");
+        document.write(" age : " + person.age + " , ");
+        document.write(" tel : " + person.tel + " <br> ");
+        
+        // 멤버함수도 추가가 가능함
+        person.out= function(){
+            document.write("out : " + this.name + " , " + this.age + " , " + this.tel + "<br>");
+        }
+
+        person.out(); // 메소드 호출
+
+        // 값을 대입하지 않은 멤버변수(속성)을 출력하면? 새로운 변수는 추가되고 값은 undifined로 됨
+        document.write("addr : " + person.addr + "<br>");
+
+        // 리터럴객체는 만들기편해서 유용해 보이지만
+        // 여러개의 속성과, 메소드를 가졌을 때 or 같은 객체를 여러개 만들때 모두 사용이 불편함.
+
+        document.write("<hr>");
+
+        // 2) 생성자 함수 [자바의 class만드는 방법과 비슷 - new키워드 사용]
+        function Student(){
+            // 속성[멤버변수] : this.키워드가 반드시 있어야 함!!
+            this.name= "aaa";
+            this.age= 20;
+            this.major= "android";
+            // var name; //이건 멤버변수가 아니라 지역변수임!!
+            this.show= function(){
+                document.write('Student : '+ this.name + " , "+ this.age + " , " + this.major + " <br> ");
+            }
+
+            var aaa= "aaa"; //이건 멤버변수가 아니라 지역변수임!
+            addr="seoul"; //이건 전역변수
+
+            //멤버변수의 값을 대입해주는 메소드
+            this.setMembers= function(name, age, major){
+                this.name= name;
+                this.age= age;
+                this.major= major;
+            }
+
+
+        }// Student...
+
+        //위에서 만든 생성자함수를 객체로 만들어 사용하기
+        var stu= new Student();
+        stu.show();
+        document.write("aaa : "+ stu.aaa + "<br>"); 
+        // 저 위에서 만든 지역변수aaa가 아니라 새로운 멤버변수 aaa가 추가된 것임
+        document.write("aaa : "+ stu.addr + "<br>"); 
+        // 새로운 멤버변수 addr 추가 됨
+        document.write("aaa : "+ addr + "<br>"); 
+        // 전역변수 출력 : seoul
+
+        // 생성자함수를 이용하면 손쉽게 다른 객체를 생성할 수 있음.
+        var stu2= new Student();
+        // stu2.name= "bbb";
+        // stu2.age= 25;
+        // stu2.major="web";
+        stu2.show();
+
+        // 멤버변수가 많으면...한번에 값을 대입하기 위한 메소드가 있으면.
+        var stu3= new Student();
+        stu3.setMembers("ccc", 30, "mobile");
+        stu3.show();
+
+        // 여기까지 하고 나니...객체를 생성할 때 멤버값을 전달하면..
+        // 코드가 더 간결함.. 생성자함수!!!
+
+        function Stu(name, age, major){
+            // 멤버변수 생성 및 대입
+            this.name= name;
+            this.age= age;
+            this.major= major;
+            this.show= function(){
+                document.write("Stu : "+this.name+" , "+this.age+" , "+this.major+" , "+"<br>")
+            }
+
+            // getter, setter
+            this.getName= function(){
+                return this.name;
+            }
+            this.setName= function(name){
+                this.name= name;
+            }
+        }
+
+        var s= new Stu("Lee", 20, "javascript");
+        s.show();
+
+        // 혹시 값을 전달하지 않는다면 ?? - undefined
+        var s2= new Stu();
+        s2.show();
+
+        // getter, setter
+        s2.setName("Hong");
+        var name= s2.getName();
+        document.write(name+ "<br>");
+
+        //// 책외에 추가적인 것들 ////
+        document.write('<hr>');
+
+        // in 키워드 : 연산자
+        document.write('name' in stu2); //name 속성이 있으면 true
+        document.write('<br>');
+        document.write('addr' in stu2); //false
+
+        if('addr' in stu2) stu2.addr= "busan"; // 이런식으로 활용
+        
+        // 객체안에 객체가 멤버로 있을 수 있음.
+        document.write('<hr>');
+        var flight={
+            airline: "korean air",
+            number: 777,
+            arrival:{
+                nation:'japan',
+                city:'tokyo'
+            }
+        }
+        document.write(flight.arrival.city + "<br>");
+        // 멤버변수를 연관배열처럼 코딩하는 것이 가능함
+        document.write(flight.arrival['nation'] + "<br>");
+
+        // Object.creat() : 객체이 clone 기능
+        var p1={
+            name:"aaa",
+            age:20,
+            show:function(){
+                document.write(this.name+" , "+this.age+"<br>");
+            }
+        }
+
+        // Clone : 객체 복제하기
+        var p2= Object.create(p1);
+
+        p1.show();
+        p2.show();
+
+        p2.name="bbb";
+        p2.age=30;
+
+        p1.show();
+        p2.show();
+
+        document.write('<hr>');
+
+        // 접근제한자 : JS에는 없는 개념//
+        // 혹시 없지만 멤버변수를 보호하고 싶다면???
+        // 즉, JS에서 캡슐화를 하고 싶다면...
+        // 정보은닉을 하고 싶다면.. 클로저변수를 활용!!
+
+        function Test(){
+            // 멤버변수를 클로저변수로 대신 만들기
+            // 사실 그냥 지역변수인데 이 지역변수를 다른 함수(메소드)에서
+            //  사용하면 메모리에 남아있다는 특징을 이용!!!
+            var name;
+            var age;
+
+            // 지연변수 (클로저변수) 를 사용하는 메소드
+            this.setName= function(n){name= n;}
+            this.getName= function(){return name;}
+
+            this.setAge= function(a){age= a;}
+            this.getAge= function(){return Age;}
+
+            this.show= function(){
+                document.write(name + " , " + age + "<br>");
+            }
+        }
+            var t= new Test();
+            t.setName("sam");
+            document.write("name : " + t.name+"<br>"); 
+            //name은 멤버변수가 아니라 지역변수 (클로저변수)라서 객체명. 으로 노출되지 않음.
+            document.write("name : " + t.getName()+"<br>");
+
+            t.setAge(25);
+            t.show();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

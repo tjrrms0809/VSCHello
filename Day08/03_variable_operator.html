@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>operator</title>
+
+    <script>
+    
+        // 같은 변수의 선언 가능
+        var a=10;
+        var a;
+
+        document.write(a);
+        document.write('<br>');
+
+        // 수치형 변수값 표기법
+        var b=3.14;
+        document.write(b);
+        document.write('<br>');
+
+        b=123.5e3;
+        document.write(b);
+        document.write('<br>');
+
+        b=123.5e-3;
+        document.write(b);
+        document.write('<br>');
+
+        // 연산자 중 특이한 것
+        var c= 1;
+        var d= "1";
+        var e= 1.0;
+
+        // 자바스크립트에서의 비교연산자 == 은 자료형은 구분하지 않고 값만 비교함
+        document.write(c==d); // 출력 : true
+        document.write('<br>');
+        document.write(c==e); // 출력 : true
+        document.write('<br>');
+
+        // 오해금지! string과 number자료형은 다른 것임
+        document.write(1+6);
+        document.write('<br>');
+        document.write("1"+6);
+        document.write('<br>');
+
+        // 그래서 JS에서는 자료형까지 함께 비교하는 연산자를 제공함
+        document.write(c===d); // 출력 : false
+        document.write('<br>');
+        document.write(c===e); // 출력 : true [ 정수와 실수는 같은 자료형 ]
+        document.write('<br>');
+    
+        document.write('<hr>');
+
+        // 0으로 나눗셈 - Infinity 키워드
+        document.write( 10/0 );
+        document.write('<br>');
+
+        // 비트연산자 중 >>>(시프트 연산자) : 부호까지 같이 시프트하는 연산자
+        // 양수는 >>와 차이가 없고.. 음수일때 부호가 변경됨
+        var g= -16;
+        document.write(g>>2);
+        document.write('<br>');
+        document.write(g>>>2);
+        document.write('<br>');
+
+        // 표현가능한 최대값
+        document.write(Number.MAX_VALUE);
+        document.write('<br>');
+
+        document.write(123456789123456789123456789);
+        document.write('<br>');
+
+        // 변수선언 두번째 방법 : var키워드 없이 변수 만들어 사용하기
+        k=5; //전역변수
+        document.write(k);
+        document.write('<br>');
+
+        // in과 delete 연산자, instanceof 연산자도 있음. [ 객체 수업때 다시 소개]
+
+        document.write('<hr>');
+
+        // 수치형과 문자형의 변환
+        var h=1;
+        document.write(typeof(h));
+        document.write('<br>');
+
+        //number->string
+        h= String(h); // 사용 잘 안함
+        h= h+"";
+        document.write(typeof(h));
+        document.write('<br>');
+
+        // string->integer(정수)
+        h= parseInt("4");
+        document.write(typeof(h));
+        document.write('<br>');
+
+        // string->float
+        h= parseFloat("3.14");
+        document.write(typeof(h));
+        document.write('<br>');
+
+        h= parseInt("3.14");
+        document.write(h);
+        document.write('<br>');
+
+        // 숫자가 아닌것을 parse하면?? NaN : Not a Number
+        h= parseInt("aaaaa");
+        document.write(h);
+        document.write('<br>');
+
+        // (수치평 <-> 문자열) 왜 할까 ?
+        // 사용자의 입력은 무조건 string 타입으로 읽어짐
+        // 사용자로부터 입력을 받는 Dialog 보여주기
+        var age= prompt('input your age','input number');
+        document.write( age + 3 ); //age가 string이라서 산술연산이 아니라 결합됨
+        document.write('<br>');
+
+        age= parseInt(age);
+        document.write( age + 3 ); 
+        document.write('<br>');
+
+        // 사용자 입력을 다이얼로그로 받으니까..좀 많이 불편함
+        // HTML의 input 요소를 이용해서 사용자입력 처리해보기..
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

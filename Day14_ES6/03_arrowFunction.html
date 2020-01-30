@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>        
+    </head>
+
+    <body>
+
+        <script>
+
+            //화살표 함수(Arrow Function) - JAVA언어의 람다식표기법.
+
+            //1. 일반적인 함수생성
+            function show(){
+                document.write("show!!<br/>");
+            }
+            show();
+
+
+            //2. 함수를 변수에 저장하여 사용하기('익명함수객체'라고 부름)
+            let output= function(){
+                document.write("output!!<br/>");
+            }
+            //익명함수 객체를 가지고 있는 output변수를 함수명처럼 사용하여 함수 호출
+            output();
+
+
+            //3.이 '익명함수객체'를 화살표함수로 변경하여 사용할 수 있음.
+            let display= ()=>{
+                document.write("display!!<br/>");
+            }
+            display();
+
+            //당연히 이 '화살표함수'도 파라미터 받을 수 있음.
+            let display2= (name)=>{
+                document.write("display2 : "+ name +" <br/>");
+            }
+            display2("sam");
+
+            
+            //4. 화살표함수의 간단 표기법!!
+            //1) 파라미터가 1개일때는 ()표시는 생략가능 [없거나, 2개 이상은 ()있어야함. ]
+            let display3= name=>{
+                document.write("display3 : "+ name +" <br/>");
+            }
+            display3("robin");
+
+            //2) 함수의 실행문이 1줄일때는 { }표기의 생략도 가능함
+            let display4= name=> document.write("display4 : "+ name +" <br/>");            
+            display4("hong");
+
+            let display5= ()=> document.write("display5!!!!!<br/>");            
+            display5();
+
+            let display6= (name, age)=> document.write("display6 : "+ name +","+ age + " <br/>");            
+            display6("kim", 20);
+
+        </script>
+
+        <hr>
+
+        <!-- 화살표 함수를 쓰는 곳은 보통 이벤트 처리에 많이 사용함. -->
+        <button id="btn1">button</button>
+        <p id="p1"></p>
+
+        <script>
+
+            //1. 버튼에 클릭이벤트 달기
+            //1) 예전방식
+            let btn1= document.getElementById('btn1');
+            btn1.onclick= function(){
+                document.getElementById('p1').innerHTML="click button : ";
+            }
+
+            //2)화살표함수사용
+            btn1.onclick= ()=>document.getElementById('p1').innerHTML="click button";
+
+
+            //2. 반복문 처리시에 특별해짐
+            let arr= new Array(10, 20, 30);
+            //css의 선택자를 이용하여 element찾아오기[ querySeletor() ]
+            document.querySelector("#p1").innerHTML= arr[0]+"<br>";
+
+            //반복문으로 배열값들 출력
+            for(let i=0; i<arr.length; i++){
+                document.querySelector("#p1").innerHTML+= arr[i]+"<br>";
+            }
+
+            //in키워드로 배열의 인덱스번호[연관배열이라면 키값] 얻어오면서 출력하기.
+            for( index in arr){
+                //document.querySelector("#p1").innerHTML+= index+"<br>";
+                document.querySelector("#p1").innerHTML+= arr[index]+"<br>";
+            }
+            document.write("<hr/>");
+
+            //이것도 짜증나서 배열이 가지고 있는 forEach()라는 특별한 메소드 사용 : 이미 Array객체수업 때 배웠음..[ES6버전에 새로 도입] 
+            // arr.forEach( function(value, index, array){
+            //     document.write( value +", "+index+", "+array.length+" <br>" );
+            // });
+            arr.forEach( function(value){
+                document.write( value +" <br>" );
+            });
+            document.write("<hr/>");
+
+            //이때 사용된 콜백함수를 화살표함수로..
+            arr.forEach( (value)=>{
+                document.write( value +" <br>" );
+            });
+            //더 줄여서!!!!
+            arr.forEach( value=>document.write( value +" <br>" ) );
+            document.write("<hr/>");
+
+
+            // 각각의 요소에 접근하여 파라미터 콜백함수의 내용을 수행하고 결과를 다시 배열로 리턴하는 map()사용도 가능
+            // 예) 배열의 각 요소에 1을 더하여 리턴..
+            let resultArr= arr.map( function( value ){
+                return value + 1;
+            } );
+            document.write("결과 : " + resultArr+"<br>");
+
+            //위의 콜백함수를 화살표함수로.
+            resultArr= arr.map( ( value )=>{ return value + 1; } );
+            document.write("결과 : " + resultArr+"<br>");
+
+            // ()와 {}를 생략하기!!!--근데..에러!!!!!
+            // resultArr= arr.map( ( value )=> return value + 1;  );
+            // {}를 생략하면 명령이 1개라는 것이고 이때는 return 키워드와 ;표시를 생략함.
+            resultArr= arr.map( value => value+1 );
+            document.write("결과 : " + resultArr+"<br>");
+
+            //익숙하지 않아서 처음에 이상하지만 익숙해지면 매우 코딩이 간결해짐!!!
+
+            //forEach()와 map()사용의 차이를 좀더 알아보기
+            arr.forEach( value => value=5 ); //value 에 값을 대입해도 원본 arr 요소의 값을 변경하는 것이 아님!!
+            document.write("결과 : " + arr+"<br>");
+
+        </script>
+
+        <hr>
+        
+      
+        <!-- 익명함수와 화살표함수를 이용하여 콜백함수를 사용할 때 차이점 : this키워드 -->
+        <button id="btn2">button2</button>
+        <p id="p2"></p>
+
+        <script>
+
+            //아래 this의 차이 소개후...
+            var num=100;
+            //let num=100; //사용하면 undefined가 됨 : let은 window객체의 멤버변수에 추가되지 않음.
+
+            // 콜백함수로 익명함수객체 function()을 사용할 때와 화살표함수()를 사용할 때 주의할 점
+            let btn2= document.getElementById('btn2');
+
+            //1)익명함수객체를 onclick콜백으로 주었을 때
+            btn2.onclick= function(){
+                document.querySelector('#p2').innerHTML= this; //여기서 this는 이벤트를 발생시킨 버튼 element
+                document.querySelector('#p2').innerHTML= this.num; //num은 버튼객체의 멤버변수로 인식되어 출력 : undefined가 됨.[버튼에 num이라는 변수가 없으니...]
+            }
+
+            //2)화살표함수로 onclick콜백으로 주었을 때
+            btn2.onclick= ()=>{
+                document.querySelector('#p2').innerHTML= this; //여기서 this는 아웃터 객체..window
+                document.querySelector('#p2').innerHTML= this.num;//이건 이 문서의 변수인 var num을 의미하므로  출력 : 100이 나옴.
+            }
+
+            ///이 차이점은 나중에 하이브리드 앱(React-Native)을 개발할 때 더 자세히 알 수 있음.
+
+
+        </script>
+
+        <!-- 수업 NO!!!!! -->
+        <!-- ECMAScript6버전에 추가된 내용은 더 많지만 필요할 때 사용...React Native수업때!!!  -->
+        <!-- getter & setter -->
+        <!-- promiss -->
+        
+        
+    </body>
+</html>

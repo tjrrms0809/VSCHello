@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.aa img{
+            background: red;
+            width: 200px;
+            height: 100px;
+            transition: width 3s, height 3s, background 3s, transform 3s;
+
+        }
+        div.aa img:hover{
+            width: 300px;
+            height: 150px;
+
+            /* 배경색 전환효과 됨 */
+            background: blue;
+
+            /* 변형효과 */
+            transform: rotate(30deg) scale(1.2, 1.2) translate(80px, 0px);
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">
+        <img src="./lion.png" alt="">
+        <img src="./pome.png" alt="">
+    </div>
+</body>
+</html>

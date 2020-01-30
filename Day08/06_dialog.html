@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+
+    <script>
+        // 일반적인 알림 경고장.. 알림이 여러개면순차적으로..
+        alert();
+        alert('알림');
+
+        // 사용자에게 확인/취소를 선택하도록 하는 다이얼로그
+        // 리턴값 : true, false
+        var answer= confirm('종료하시겠습니까?');
+        document.write(answer+"<br>");
+
+        // 사용자 입력을 받을 수 있는 다이얼로그
+        // 리턴타입은 언제나 string // 값을 입력하지 않으면 두번째 파라미터가 리턴되고, 취소하면 null)
+        var age= prompt("당신의 나이를 입력하세요.", "0");
+        document.write(age+ "<br>" );
+        document.write(typeof(age)+ "<br>" );
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>prototype test</title>
+
+        <script>
+
+            //JS는 자바와 다르게 메소드가 객체들 마다마다 존재함!
+            function Person(name, age){
+                this.name= name;
+                this.age= age;
+            }
+
+            //Person 자료형에 하나만 존재하는 메소드 추가 [java에서는 당연하게]
+            Person.prototype.show= function(){
+                document.write('person : '+ this.name + ' , ' +this.age+"<br>");
+            }
+
+            var p1= new Person("aaa",10);
+            var p2= new Person("bbb",20);
+
+            p1.show();
+            p2.show();
+
+            Person.prototype.getName= function(){
+                return this.name;
+            }
+            document.write('getName() : ' + p2.getName() + '<br>');    
+              
+            // 클래스 변수 [자바의 static변수 같은] - 그자료형에 1개만 존재하는 변수
+
+            document.write('<hr>');
+
+            Person.prototype.addr= "seoul";
+
+            document.write('p1 addr : '+p1.addr+ "<br>");
+            document.write('p2 addr : '+p2.addr+ "<br>");
+
+            // 주의!!! 클래스변수에 값을 대입할때!!! 조심
+            p2.addr="busan"; //이건 프로토타입변수에 넣은 것이 아니라 새로운 멤버 addr을 추가 하여 값을 대입한것임.
+            document.write('p1 addr : '+p1.addr+ "<br>");
+            document.write('p2 addr : '+p2.addr+ "<br>");
+
+            // 프로토타입변수에 값을 대입할 때는... 처음 생성할 때처럼
+            Person.prototype.addr="incheoun";
+            document.write('p1 addr : '+p1.addr+ "<br>");
+            document.write('p2 addr : '+p2.addr+ "<br>");
+
+            // JS는 원래 상속문법이 존재하지 않음.
+            // 프로토타입이 상소과 흡사한 역할을 하게됨
+            function Hello(){
+                this.a= 10;
+                this.b= 20;
+            }
+            
+            Hello.prototype= {name:"aa", age:30}
+
+            var h= new Hello();
+            document.write(h.a+ ", "+h.b+", "+h.name+", "+h.age+"<br>");
+
+            document.write('<hr>');
+            // Object의 존재!! [모든 객체의 기본 객체]
+            document.write(p1+ "<br>");
+            document.write(p1.toString()+ "<br>");
+            document.write(p1.hasOwnProperty('name')+ "<br>");
+            document.write(p1.constructor+ "<br>");
+
+            // 지역변수를 멤버변수에서 사용하는 경우도 많음
+            function Car(model, color){
+                var abc=4; // 이건 멤버변수 (property)가 아님!!
+
+                this.model= model;
+                this.color= color + abc;
+            }
+            var c=new Car('aa',10);
+            document.write(c.model+", "+c.color);
+
+        </script>
+
+    </head>
+    <body>
+        
+    </body>
+</html>

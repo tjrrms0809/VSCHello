@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap</title>
+
+        <!-- Bootstrap은 Jquery와 사용하는 방법이 거의 같음 -->
+
+        <!-- Bootstrap 사이트 : https://getbootsrap.com -->
+        <!-- 라이브러리 적용방법 -->
+        <!-- 1. 다운로드 방식 -->
+        <!-- 기본적으로 추가할 문서는 3개 -->
+        <!-- 1. 부트스트랩의 css문서 [bootstrap.css] -->
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <!-- 2. jQuery 라이브러리   [jquery.js] : 부트스트랩의 기능들이 jquery를 기반으로 제작되었음.-->
+        <script src="./js/jquery-3.4.1.min.js"></script>
+        <!-- 3. 부트스트립의 js문서  [bootstrap.js] : 반드시 jquery라이브러리 다음에 위치해야 함.-->
+        <script src="./js/bootstrap.js"></script>
+
+        <!-- 2. CDN 방식 -->
+
+    </head>
+    <body>
+        <!-- 1. bootstrap적용하기 : 이미 css에 클래스선택자를 통해 각각의 스타일코드들이 작성되어 있으므로..해당하는 클래스를 요소에 지정해주기만 하면 적용됨 -->
+        <button class="btn btn-primary">Button</button>
+
+        <!-- 부트스트랩라이브러리의 개략적 사용 알아보기 -->
+
+        <!-- 1)벽에 붙어있어서 보기 별로죠? -->
+        <div class="container" style="padding-top: 16px; text-align: center;">
+            <button class="btn btn-primary">button</button>
+            <button class="btn btn-success">button</button>
+        </div>
+
+        <!-- 가장많이 사용하는 테이블작업도 수월하게 -->
+        <table class="table table-hover mt-3">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+                <th>date</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>Hello bootstrap.</td>
+                <td>2019.12.23</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>Nice to meet you.</td>
+                <td>2019.12.24</td>
+            </tr>
+        </table>
+        <hr>
+        <!-- pagination을 주면... -->
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a href="" class="page-link">1</a></li>
+            <li class="page-item"><a href="" class="page-link">2</a></li class="page-item">
+            <li class="page-item"><a href="" class="page-link">3</a></li class="page-item">
+            <li class="page-item"><a href="" class="page-link">4</a></li class="page-item">
+        </ul>
+
+        <hr>
+
+        <!-- 쇼핑몰 같은 곳에서 자주보는 Card형태의 컴포넌트 -->
+        <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+            <img class="card-img-top" src="./imgs/moana01.jpg" alt="moana01">
+            <div class="card-body">
+                <h5 class="card-title">MOANA 01</h5>                
+                <p class="card-text">moana is very good movie.</p>
+                <a href="#" class="btn btn-primary">Go moana</a>
+            </div>
+        </div>
+        <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+            <img class="card-img-top" src="./imgs/moana02.jpg" alt="moana01">
+            <div class="card-body">
+                <h5 class="card-title">MOANA 02</h5>                
+                <p class="card-text">moana is very good movie.</p>
+                <a href="#" class="btn btn-primary">Go moana</a>
+            </div>
+        </div>
+
+        <!-- 옆으로 card들을 배치하고자 한다면.. -->
+        <hr>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+                    <img class="card-img-top" src="./imgs/moana01.jpg" alt="moana01">
+                    <div class="card-body">
+                        <h5 class="card-title">MOANA 01</h5>                
+                        <p class="card-text">moana is very good movie.</p>
+                        <a href="#" class="btn btn-primary">Go moana</a>
+                    </div>
+                </div>
+                <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+                    <img class="card-img-top" src="./imgs/moana02.jpg" alt="moana01">
+                    <div class="card-body">
+                        <h5 class="card-title">MOANA 02</h5>                
+                        <p class="card-text">moana is very good movie.</p>
+                        <a href="#" class="btn btn-primary">Go moana</a>
+                    </div>
+                </div>
+                <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+                    <img class="card-img-top" src="./imgs/moana01.jpg" alt="moana01">
+                    <div class="card-body">
+                        <h5 class="card-title">MOANA 01</h5>                
+                        <p class="card-text">moana is very good movie.</p>
+                        <a href="#" class="btn btn-primary">Go moana</a>
+                    </div>
+                </div>
+                <div class="card ml-3" style="width:20rem;"><!-- rem : em처럼 기본 글씨 크기를 기반으로 한 사이즈이도..em하고 다르게 최상위 컨테이너의 글씨크기를 기반-->
+                    <img class="card-img-top" src="./imgs/moana02.jpg" alt="moana01">
+                    <div class="card-body">
+                        <h5 class="card-title">MOANA 02</h5>                
+                        <p class="card-text">moana is very good movie.</p>
+                        <a href="#" class="btn btn-primary">Go moana</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+    </body>
+</html>

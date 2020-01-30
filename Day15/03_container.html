@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+
+        <!-- 부트스트랩 라이브러리 추가 : CDN  [w3schools.com]-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- 요소들의 배치에 대한 연습 -->
+        <!-- block요소를 사용할 때 -->
+        <!-- 기본적으로 부트스트랩을 적용하면 요소의 기본 padding과 margin에 영향을 줌.. 화면끝에 딱 붙어서 나옴 -->
+        <h2 style="background-color: burlywood;">this is headding elements.</h2>
+        <p style="background-color: cadetblue;">this is praraphy element.</p>
+
+        <!-- 가로가 너무길면 이쁘지 않음..그래서 일반적으로 가로사이즈를 980px을 지정 -->
+        <div style="width: 980px;">
+            <h2 style="background-color: burlywood;">this is headding elements.</h2>
+            <p style="background-color: cadetblue;">this is praraphy element.</p>            
+        </div>
+
+        <!-- 가로사이즈를 940으로[좌우여백고려해서] 하고 가운데정렬까지 해주는 스타일 -->
+        <div class="container">
+            <h2 style="background-color: burlywood;">this is headding elements.</h2>
+            <p style="background-color: cadetblue;">this is praraphy element.</p>
+        </div>
+
+        <div class="container">
+            <!-- 한줄로 배치시키기 -->
+            <div class="row">
+                <h2>Hello</h2>
+                <p>Nice</p>
+
+                <!-- 인라인요소 : 원래 인라인요소는 사이즈조절이 안됨. class="row"안에 위치하면 inline-block이 되어 사이즈조절됨 -->
+                <!-- row를 사용하면 container의 padding 좌우가 없어짐. -->
+                <button>aaa</button>
+                <a href="#" style="width: 200px; background-color: lightgreen;">google</a>
+            </div>
+
+            <!-- row안에 요소들을 균등분할 -->
+            <!-- row안에 칸의 개수를 12개로 계산하여 사이즈 지정가능함 -->
+            <div class="row mt-5">
+                <div class="col-md-2" style="background-color: lightgreen;">left</div>
+                <div class="col-md-7" style="background-color: yellow;">center</div class="col-md-4">
+                <div class="col-md-3" style="background-color: gray;">right</div class="col-md-4">
+            </div>
+            <!-- md, sm은 요소의 크기를 말하는 것이아니라..반응형의 기준사이즈를 의미함 -->
+            <div class="row mt-5">
+                <div class="col-sm-2" style="background-color: lightgreen;">left</div>
+                <div class="col-sm-7" style="background-color: yellow;">center</div class="col-md-4">
+                <div class="col-sm-3" style="background-color: gray;">right</div class="col-md-4">
+            </div>
+
+            
+        </div>
+
+        <!-- container는 최대 940px이상 커지지 않음.. -->
+        <!-- 한계를 주지 않되 좌우여백은 주고 싶다면.. -->
+        <div class="container-fluid">
+            <h2 style="background-color: burlywood;">this is headding elements.</h2>
+            <p style="background-color: cadetblue;">this is praraphy element.</p>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+    </body>
+</html>

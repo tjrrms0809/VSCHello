@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+
+            document.write("Hello<br>");
+
+            // ECMAScript6(2015년도 발표 버전 : ES6 or ES2015)의 새로운 것들  [ 참고. ECMA 2016 (ES7): 제곱 연산자와 includes() 추가 ,  ECMA 2017 (ES8) : async-awit도입 ]
+
+            //1.변수 선언 키워드 추가 : let, const
+
+            //기존의 var변수
+            var a=10;
+            document.write(a +"<br>");
+
+            //같은 이름의 변수를 또 선언하면??
+            var a=20;
+            document.write(a +"<br>");
+            //상관없음..그냥 'a'변수의 값이 20으로 변경됨..
+
+
+            //새로운 let키워드로 변수 선언
+            let b=100;
+            document.write(b +"<br>");
+
+            //같은 이름의 변수를 또 선언하면??- ERROR ... 이 스크립트영역(js파일)이 처음부터 실행되지 못함.!!!
+            // let b=200;
+            // document.write(b +"<br>");
+
+            //즉 let은 var과 다르게 같은 이름의 변수가 여러번 사용되는 것을 방지함.
+            //let으로 만든 변수의 값을 변경하려면..기존의 네이티브언어들 처럼 변수명만 사용
+            b=200;
+            document.write(b +"<br>");
+
+            
+            //const는 상수화된 변수... 자바의 final, c언어의 const와 같음
+            const c=1000;
+            document.write(c +"<br>");
+
+            //상수화 되어 있기에 c변수의 값 변경 불가!!-- ERROR..
+            //단,, 이 스크립트영역(js파일)이 모두 실행되지 못하는 것이 아니라...이 부분 이후 부분부터 실행이 안됨..
+            // c=2000;
+            // document.write(c +"<br>");
+
+
+            //당연히 const도 let처럼 같은 변수명으로 선언하는 것도 불가능함...ERROR..이 에러는 let때만 마찬가지로 처음부터 실행안됨.
+            //const c=2000;
+            //document.write(c +"<br>");
+
+
+            //let나 const도 역시 자료형은 자유롭게 저장 가능함.
+            let d="aaa";
+            document.write(d +"<br>");
+
+            d=30;
+            document.write(d +"<br>");
+
+            d=true;
+            document.write(d +"<br>");
+
+            d=new Date();
+            document.write(d +"<br>");
+
+            const e="sam";
+            document.write(e +"<br>");
+
+            const f=new Date();
+            document.write(f +"<br>");
+
+            document.write("<hr/>");
+            // var과 let, const의 가장 큰 차별점은 위처럼 한번만 선언할 수 있다는 것보다...
+            // 인식범위(scope)의 차이가 더 의미가 있음.
+            // var 키워드는 함수단위 지역변수이고
+            // const, let은 블럭단위 지역변수임.
+
+            //연습1) {}블럭밖의 변수와 같은 이름의 지역변수를  var, let 으로 만들었을 때 값의 차이
+            //먼저.. var.....
+            var g=10;
+            //억지로 {}블럭하나 생성
+            if(true){
+                var g=20; //{}블럭 밖에 있는 var g를 사용한 것임.
+                document.write(g +"<br>"); //결과 : 20
+            }
+            document.write(g +"<br>"); //결과 : 20
+
+
+            //let으로 변수 선언시..
+            let h=10;
+            //억지로 {}블럭하나 생성
+            if(true){
+                let h=20; //{}블럭 밖에 있는 let h와 다른 지역변수이며 같은 이름 'h'를 사용한 것임(전역변수는 지역변수에 의해 가려지므로 에러아님--일반 네이티브 언어처럼!!!)
+                document.write(h +"<br>"); //결과 : 20
+            }
+            document.write(h +"<br>"); //결과 : 10
+
+            //즉, let 키워드가 일반적인 네이티브언어(c, c++, java)와 유사함.
+
+
+            //연습2) 블럭안에 선언된 var 지역변수와 let 지역변수의 인식범위
+            if(true){
+                var k=50; //함수안에서는 {}와 상관없이 알아들음.
+                document.write(k +"<br>"); //결과 : 50
+            }  
+            document.write(k +"<br>"); //결과 : 50
+
+
+            if(true){
+                let m=80;//{}블럭안에서만 알아들음...
+                document.write(m +"<br>"); //결과 : 50
+            }
+            //document.write(m +"<br>"); //결과 : Error m이 누구인지 모름...
+
+
+            //연습3) var이 {}블럭단위가 함수단위 라는 것을 알아보기...           
+            var n=10; 
+            function aaa(){
+                var n=5; //var키워드는 함수단위...
+                document.write(n +"<br>");
+            }            
+            aaa();// n:5
+            document.write(n +"<br>"); //n:10
+
+            //let은 당연히 위처럼 됨. 함수도 {}블럭이므로 블럭단위임.
+
+
+            //함수 안에서 선언한 var변수는 밖에서 알아듣지 못함.
+            function bbb(){
+                var p=20;
+            }
+            bbb();            
+            //document.write(p +"<br>");//ERROR - p가 누구인지 모름..
+
+
+            //제어문같은 블럭안에 선언된 var 변수는 밖에서 인식 가능함.[위 연습2 에서 했음.]
+            if(true){
+                var r=30;
+            }
+            document.write(r +"<br>");//r : 30
+
+
+            //let 키워드 변수는 블럭안에서 선언된 변수를 밖에서 인식 못함.[위 연습2 에서 했음.]
+            if(true){
+                let s=50;
+            }
+            //document.write(s +"<br>");//ERROR - s가 누구인지 모름..
+
+
+            //반복문 사용할 때......
+            for(var i=0; i<3; i++){
+                document.write("aaa<br>");
+            }
+            document.write(i +"<br>");//i:3
+
+            for(let j=0; j<3; j++){
+                document.write("aaa<br>");
+            }
+            //document.write(j +"<br>");//ERROR - j가 누구인지 모름..
+
+
+
+            document.write('<hr>');
+            document.write(x+"<br>"); // Hoisting(호이스팅) : 변수선언보다 사용을 먼저해도 변수선언의 사용 이전으로 자동 이동되는 기술 - 단, 변수선언과 초기화만 이동 되고 값의 대입이 안된 상태이기에 undefined
+            var x=10; 
+
+            //document.write(y+"<br>"); // ERROR : Hoisting(호이스팅)은 되지만 var키워드와 다르게 변수명이 프로세스에 등록만되고 초기화(즉,메모리 할당)이 안된 상태여서 ERROR 
+            let y=10;
+
+
+            // Hoisting(호이스팅)이 된다는 것을 확인해보기
+            var z=100;
+            {
+                document.write(z+"<br>");   // 여기서 z는? let키워드가 Hoisting이 안되는 것이라면 당연히 여기서의 z는 var z이고 그러므로 100이 나와야 하지만...z라는 변수명을 아래의 let z로 인식하여 에러!!
+                let z=50; //지역변수             
+            }
+
+
+
+
+
+
+        </script>
+
+    </body>
+</html>

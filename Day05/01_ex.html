@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ex</title>
+
+        <style>
+            /* display속성 */
+            /* 블럭요소를 인라인요소로 변경 [width조정이 불가해짐]*/
+            #aa{display: inline;} /* width: 300px ;*/
+            /* 인라인처럼 옆으로 배치되지만 블럭처럼 너비를 주고 싶다면 */
+            #aa{display: inline-block; width: 300px;}
+
+            /* 인라인요소를 블럭요소로.. */
+            img.bb{display: block;}
+
+            /* display속성값으로 none [안드로이드의 gone역할] */
+            li#cc{display: none;}
+            /* li#cc{visibility: hidden;}공간은 차지하고 보이지 않은것 */
+
+
+            /* position속성 */
+
+            .aaa{background-color: black; position: relative;}
+
+            #p1{
+                background-color: cyan;
+                width: 200px;
+                height: 50px;
+            }
+            #p2{
+                position: static; /*원래 놓여질 위치대로 놓기:default*/
+                position: relative; /*원래 놓여질 위치를 기준으로...*/
+                position: absolute; /*문서의 좌상단을 기준으로... 부모의 position의 relative면 부모의 좌상단을 기준으로..*/
+                position: fixed; /*브라우저를 기준으로..*/
+                /* 요소의 위치지정속성 [static에서도 적용 안됨]*/
+                left: 50px;
+                top: 30px;
+                /* right: 0px;
+                top: 0px; */
+
+                background-color: yellow;
+                width: 200px;
+                height: 50px;
+            }
+            #p3{
+                background-color: lightgreen;
+                width: 200px;
+                height: 50px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        
+        <!-- display속성 연습 -->
+        <p id="aa">Hello world</p>
+        <a href="">Good bye</a>
+        <em>good morning.</em>
+
+        <img src="lion.png" alt="" class="bb">
+
+        <!-- display:gone연습 -->
+        <hr>
+        <ul>
+            <li>aaa</li>
+            <li id="cc">bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <hr>
+        <!-- 블럭요소와 인라인요소를 함께사용할 때 고려할 것들!! -->
+
+        <!-- 블럭요소안에 블럭요소를 넣었을 때..는  -->
+        <div style="background-color: tomato; border: solid; padding: 5px;">Nice  <p>aaa</p> world</div>
+
+        <!-- 인라인요소안에 블럭요소를 넣으면..권장하지 않음. 에러는 아님 -->
+        <span style="background-color: teal; border: solid; padding: 5px;">Nice <p>aaa</p> world</span>
+
+        <!-- 블럭요소 안에 블럭요소넣을 때 같은 요소를 넣는 건 권장하지 않음 -->
+        <p style="background-color: yellow; border: solid; padding: 5px;">Nice <p>aaa</p> world</p>
+
+        <h1 style="background-color: orange; border: solid; padding: 5px;">Nice <h1>aaa</h1> world</h1>
+
+
+        <!-- position -->
+        <hr>
+        <div class="aaa">
+            <p id="p1">block #1</p>
+            <p id="p2">block #2</p>
+            <p id="p3">block #3</p>
+        </div>
+
+
+
+    </body>
+</html>

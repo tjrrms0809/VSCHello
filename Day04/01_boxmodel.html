@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Box model</title>
+
+        <!-- 내부스타일시트 적용 -->
+        <style>
+            /* 이 영역 안에서는 css문법으로 작성 */
+
+            p.border{
+                /* 경계선 스타일 : 경계선 width 지정이 없으면 기본 3px*/
+                border-style: dotted;
+
+                /* 경계선의 스타일을 top,bottom,left,right 따로지정가능 */
+                border-top-style: solid;
+
+                /* 경계선의 폭(너비) : px, thick, medium, thin */
+                border-width: 5px;
+                border-left-width: thin;
+
+                /* 경계선 색상 */
+                border-color: red;
+                border-bottom-color: blue;
+
+                /* 모서리를 둥둘게 */
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+                /* 경계선 이미지 */
+                /* 경계선의 너비가 이미지를 보여줄 정도여야 함 */
+                border: 30px solid transparent; /*축약형*/
+
+                border-image-source: url('./border.png');
+                border-image-slice: 30 30; /*높이, 너비*/
+                border-image-repeat: round;
+
+                /* 요소크기 */
+                width: 70%;
+                height: 200px; /*높이값은 %가 안됨. why? 부모사이즈가 정해져있지 않아서*/
+                margin-left: 50px;
+
+                /* 중앙 정렬 */
+                margin-left: auto; margin-right: auto;
+            }
+
+            /* img, input요소는 인라인요소중에서 너비조정이 가능함 요소 */
+            img{width: 500px; border: 1px solid black;}
+            input{width: 100%; background-color: aqua;}
+
+            /* 너비조정이 불가한 인라인요소 */
+            a{background-color: red; width: 100%;}
+            em{background-color: aqua; width: 100px;}
+
+            /* 마진에 대한 연습 */
+            /* web에서의 마진은 서로 겹쳐짐 */
+            #p1{background-color: red; height: 50px; margin: 0px; margin-bottom: 10px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: 10px;}
+
+            /* 심지어 마진에 음수값 지정도 가능함. 겹쳐질 수 있다는 것임 */
+            #p1{background-color: red; height: 50px; margin: 0px;}
+            #p2{background-color: green; height: 50px; margin: 0px; margin-top: -20px; width: 50%;}
+
+
+            /* 배경 스타일 */
+            p#background{
+                background-color: #00ff00;
+                background-image: url('./image.png');
+                background-size: 200px 100px;
+
+                background-repeat: repeat; /*defult*/
+                background-repeat: repeat-x;
+                background-repeat: no-repeat;
+
+                background-position: center;
+                background-position: right top;
+                background-position: center top;
+
+                /* 축약형 */
+                background: green url('image.png') no-repeat center;
+
+                padding: 30px;
+            }
+
+            /* background-attachment */
+            p#attachment{
+
+                width: 60%;
+                height: 200px;
+                border: 2px solid blue;
+                overflow: scroll;
+                margin-left: auto; margin-right: auto;
+
+                background-image: url('./image.png');
+                background-size: 100px 50px;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                background-attachment: scroll;/*기본 : 컨텐츠가 스크롤되도 요소의 가운데에 이미지가 배치*/
+                background-attachment: local;/*배경이미지가 컨텐츠에 있는 느낌*/
+                background-attachment: fixed;/*브라우저를 기준으로 배치[요소밖이면 보이지 않음]*/
+                
+
+            }
+
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- 경계선 border/ 요소크기 / 중앙정렬 -->
+        <p class="border">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi nobis minus illum officia neque itaque hic vero fugit nam id omnis mollitia sint dolorum, cum dolores, commodi, laborum ea amet?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ut eveniet suscipit non deserunt? Dicta, cum. Earum dolorem ab vel pariatur neque voluptatem nihil id fugit aut! Tenetur, fugit aliquam.            
+        </p>
+
+        <!-- 요소크기에 대한 고찰 -->
+        <!-- 인라인요소 : 너비조정 가능 -->
+        <img src="./back.jpg" alt="back">
+        <input type="text">
+
+        <!-- 인라인요소 : 너비조정 불가능 -->
+        <a href="">anchor element</a>
+        <em>강조 요소!!</em>
+
+        <hr>
+        <!-- margin -->
+        <div class="margin">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+
+        <!-- background -->
+        <p id="background">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, fugit. Rerum inventore voluptate magnam, eius ipsa harum error natus quia nam, perspiciatis, voluptates laudantium quaerat libero veniam! Consequuntur, nesciunt magni.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et modi maxime praesentium laboriosam, est, sapiente quod corrupti saepe ratione officiis doloribus, reprehenderit quaerat nemo rerum! Temporibus quam sed facilis itaque!
+        </p>
+
+
+        <!-- background-attachment -->
+        <p id="attachment">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, qui quidem quis sequi molestias molestiae autem? Inventore magni ratione reiciendis, ut temporibus expedita dicta in, corporis eaque voluptatibus beatae accusantium.
+        </p>
+
+    </body>
+</html>

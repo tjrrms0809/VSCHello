@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- JQuery library추가 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    
+        // XML문자열
+        var xml="<movie><title>Avatar</title><genre>sf, advanture</genre></movie>";
+
+        // xml을 파싱해주는 객체생성
+        var xmlDom= $.parseXML(xml); //xml을 xmlDOM객체로 변환
+        alert($(xmlDom).find('title').text()+"\n"+$(xmlDom).find('genre').text())
+
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

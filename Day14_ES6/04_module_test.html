@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title></title>
+        
+        <!-- 다른 문서의 클래스나 변수들을 가져와서 사용하는 기법 : 모듈!!!!  -->
+        <!-- 현업에서는 이런 Module들을 만들어 놓고 재사용하여 프로젝트의 제작속도를 향상시킴. -->
+
+
+        <!--  아직 import와 export가 모든 브라우저에서 자유롭게 사용되지 못함(edge에서 테스트 가능함)  -->
+        <!-- [ node.js에서는 사용이 가능함 : 즉, HybridApp-React Native에서 주로 사용됨 ] -->
+        
+        <!-- 별도의 파일(module_aa.js)에 함수를 만들고 이를 불러서 사용하기!! [ 여기서는 html에서 js를 불러서 사용하지만 실제로는 js문서 끼리 불러서 사용하는 것임 ]-->
+        <!-- type="module"을 주어야 import할 수 있음 -->
+        <script type="module">  
+            import show from './module_aa.js';
+
+            //default가 없는 export 는 구조분해할당으로 받아야만 함.
+            //import addTextToBody from './module_aa.js';// import를 못함!!!
+            import {addTextToBody} from './module_aa.js';// 구조분해할당으로 import
+
+            //변수나 상수도 import 가능함 [당연히 여러개를 한줄에 받을 수 있음]
+            import {num, age} from './module_aa.js';            
+            
+            //같은 module_aa.js 에서 가져오는 위  3개의 import문은 한줄로 작성하는 것이 가능함
+            //import show, {addTextToBody, num, age} from './module_aa.js';
+
+            //혹시 import할 때 이름을 다르게 사용하고 싶다면?
+            //import {num, age as a} from './module_aa.js';
+
+            show(); 
+            addTextToBody('Modules are pretty cool.');
+            alert(num +"\n"+age);          
+            
+        </script>
+
+        <!-- 다른 js문서에서도 module_aa.js를 import할 수 있음. [ 위 <script>문 주석처리 후 테스트 해보기!! ] -->
+        <!-- <script src="./module_bb.js" type="module"></script> -->
+
+
+        
+    </head>
+
+    <body>
+    </body>
+</html>

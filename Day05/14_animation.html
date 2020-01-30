@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div#aa{
+            position: absolute;
+            background: green;
+
+            /* 원모양 만들기 */
+
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            /* 애니메이션 마들기 */
+            animation-name: bounce;
+            animation-duration: 3s;
+            animation-iteration-count: 10; /* 반복 획수 */
+        }
+
+        @keyframes myanim {
+            0%{left: 0px; top:0px}
+            25%{left: 100px; top: 0px;}
+            50%{left: 200px; top: 0px;}
+            75%{left: 100px; top: 50px;}
+            100%{left: 0px; top: 0px;}
+            
+        }
+        /* 공튀기는 애니메이션 만들어보기 */
+        @keyframes bounce {
+            0%, 100%{
+                bottom: 0px;
+                animation-timing-function: ease-out;
+            }
+            50%{
+                bottom: 200px;
+                animation-timing-function: ease-in;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="aa"></div>
+</body>
+</html>

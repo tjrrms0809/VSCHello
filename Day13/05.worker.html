@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <script>
+            function clickBtn(){
+                var n=0;
+                while(true){
+                    n++;
+                    document.getElementById('hh').innerHTML= n;
+                }
+                //무한반복문을 실행하면 화면에 그리는 작업도 못함. 브라우저 렉!!!
+            }
+        </script>
+
+        <script>
+            var w;            
+            function clickBtn2(){
+
+                //Worker는 웹기술이어서 웹서버에 올려야만 실행할 수 있음. 즉, http://로 시작되는 주소로 문서를 열어야함.
+                //로컬에서도 동작되는 브라우저가 일부 있음.(Edge, firefox)
+               if(w==undefined){
+                    
+                    //내장생성자 함수로서 존재하는 Worker객체 생성[자바 Thread]
+                    w= new Worker('worker.js'); //생성되면 자동 start()
+                    //worker가 해야할 작업을 별도의 js문서에 만들어야 함.
+
+                    //worker에서 postMessage()로 보낸 데이터 받기[콜백함수 등록]
+                    w.onmessage= function( event ){
+                        //파라미터로 전달된 event객체가 보내진 데이터를 가지고 있음.
+                        document.getElementById('hh').innerHTML= event.data; 
+                    }
+
+                }else{
+                    alert('이미 워커가 존재함');
+                }                
+
+            }
+
+            function clickBtn3(){
+                //워커 멈추기
+                w.terminate();
+                w= undefined;                
+            }
+        </script>
+    </head>
+    <body>
+
+        <button onclick="clickBtn()">무한카운트</button>
+        <hr>
+        <h2 id="hh">결과</h2>
+        <hr>
+        <button onclick="clickBtn2()">start worker</button>
+        <button onclick="clickBtn3()">stop worker</button>
+
+        <!-- 워커동작중에 메인스레드가 동작하는지 여부 테스트용 버튼 -->
+        <button onclick="alert('clicked!!')">button</button>
+
+        <hr>
+        <h3>Worker에게 메세지 전달</h3>
+
+        <!-- 워커가 별도의 js문서라서 이곳에서의 데이터를 사용할 수가 없기에..전달하는 기법이 필요함 -->
+        <input type="text" id="in1">
+        <button onclick="aaa()">send to worker</button>
+        <input type="text" id="in2" size="40" readonly>
+        <script>
+            function aaa(){
+                //입력된 값
+                var v= document.getElementById('in1').value;
+
+                w2= new Worker('worker2.js');
+                w2.postMessage(v); //워커에게 전달
+
+                //워커에서 postMessage()로 보낸 데이터를 받기
+                w2.onmessage= function( event ){
+                    document.getElementById('in2').value= event.data;
+                }
+            }            
+        </script>
+        
+    </body>
+</html>

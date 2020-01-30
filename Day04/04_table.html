@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <style>
+        table{
+            border: 2px solid; border-collapse: collapse; text-align: center;
+        }
+        th, td{border: 1px solid; padding: 10px 5px;}
+
+        th{background-color: green; color: white;}
+
+        /* 짝수줄만 배경색을 다르게 */
+        tr:nth-child(2n+0){background-color: blue;}
+        td:nth-child(1){width: 40%;}
+
+        th{border-bottom: double red;}
+
+        /* 직접 만들지 않았지만 그래서 보이지는 않지만 실제 */
+        /* table안에 첫번째 자식은 tr에 아니라 tbody라는 녀석임 */
+        table>:nth-child(1){border: 10px solid aqua;}
+        table tr{color: violet}
+        table>tr{color: red;}
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>이메일</th>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>chul@naver.com</td>
+        </tr>
+        <tr>
+            <td>김영희</td>
+            <td>kim0@naver.com</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>hong@naver.com</td>
+        </tr>
+        <tr>
+            <td>김수진</td>
+            <td>kim@naver.com</td>
+        </tr>
+    </table>
+    
+</body>
+</html>
